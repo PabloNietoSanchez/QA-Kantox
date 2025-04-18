@@ -46,19 +46,19 @@ I’m going to assume that the next 4 points were already tested and their funct
 When you add a product to the cart the price on the cart changes to the correct amount  
 [This tests might depend on if the user is logged in or not]
 
-**5.1 - Green Tea Test**  
+- **5.1 - Green Tea Test**  
 Given a User on the shopping page  
 When Clicks on the AddItemButton on GreenTeaItem  
 Then GreenTeaItem is added to ShoppingCart  
 And ShoppingCartPrice is/= 3.11
 
-**5.2 - Strawberries Test**  
+- **5.2 - Strawberries Test**  
 Given A User on the shopping page  
 When Clicks on the AddItemButton on StrawberriesItem  
 Then StrawberriesItem is added to ShoppingCart  
 And ShoppingCartPrice is/= 5
 
-**5.3 - Coffee Test**  
+- **5.3 - Coffee Test**  
 Given A User on the shopping page  
 When Clicks on the AddItemButton on CoffeeItem  
 Then CoffeeItem is added to ShoppingCart  
@@ -69,7 +69,7 @@ And ShoppingCartPrice is/= 11.23
 **6 - You can delete a product from the cart**  
 When you delete the product from the cart the prince on the cart changes to the right amount
 
-**6.1 - Item Deletion Test**  
+- **6.1 - Item Deletion Test**  
 Given A User on the shopping page  
 And (x)Item on ShoppingCart  
 And (x)Item Price is added into ShoppingCartTotal  
@@ -109,19 +109,19 @@ This could be interpreted 2 ways:
 
 #### 7 - Free Rule
 
-**7.1 - You add 1 coffee**  
+- **7.1 - You add 1 coffee**  
 The Free Rule doesn't apply  
 The price on the cart accounts for one coffee: £11.23
 
-**7.2 - You add 2 coffee**  
+- **7.2 - You add 2 coffee**  
 The Free Rule applies so 1 is free  
 Price = £11.23
 
-**7.3 - You add 3 coffee**  
+- **7.3 - You add 3 coffee**  
 Free Rule applies to 1  
 Price = £22.46
 
-**7.4 - You add 4 coffee**  
+- **7.4 - You add 4 coffee**  
 2 free → Pay for 2 → Total = £22.46  
 
 *Test for 100 products: Pay for 50 → £561.50. Also test: 5, 10, 15, 20…*
