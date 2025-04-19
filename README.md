@@ -5,7 +5,7 @@ Here you will find my answer to the **Kantox QA Test**.
 ## Included Files
 
 1. **API Test Collection**  
-   A `.json` file for use in Postman.
+   A `.json` file with the test collection for Postman.
 
 2. **Answer.md**  
    A markdown document with answers to the first exercise.
