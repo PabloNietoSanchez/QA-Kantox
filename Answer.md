@@ -162,7 +162,7 @@ When buying 20 of the items [Strawberries], the price gets changed accordingly [
 ---
 
 **FractionPriceRule**  
-When item quantity is equal or over 4, get a 50% discount — applies to Green Tea.
+When item quantity is equal or over 4, get a 50% discount - applies to Green Tea.
 
 #### 9. FractionPriceRule
 
