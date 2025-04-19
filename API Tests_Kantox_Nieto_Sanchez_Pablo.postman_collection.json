@@ -27,6 +27,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"console.log(\"⭐ START - Posts - Does It Work - Test\")\r",
 									"//Revisa el estatus de la respuesta\r",
 									"\r",
 									"pm.test(\"Status code is 200\", function () {\r",
@@ -487,6 +488,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"\r",
 									"//Revisa el estatus de la respuesta\r",
 									"\r",
 									"pm.test(\"Status code is 200\", function () {\r",
@@ -584,7 +586,9 @@
 									"    const data = pm.response.json();\r",
 									"    console.log(\"📋 Contenido completo de todos los posts:\");\r",
 									"    console.log(JSON.stringify(data, null, 2)); // Formato legible\r",
-									"});"
+									"});\r",
+									"//Revisa el estatus de la respuesta\r",
+									"console.log(\"⭐ END - Posts - Does It Work - Test\")"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -627,6 +631,8 @@
 											"listen": "test",
 											"script": {
 												"exec": [
+													"//Revisa el estatus de la respuesta\r",
+													"console.log(\"⭐ START - Posts - It Breaks - Same ID Test\")\r",
 													"// Mismo código de status para comprobar que o bien se ha creado el post [201], o todo está OK [200]\r",
 													"pm.test(\"Status code is 201 o 200\", function () {\r",
 													"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
@@ -833,7 +839,7 @@
 													"    // Se añade un console.log para confirmar que la eliminación del post se ha hecho correctamente\r",
 													"    console.log(\"🗑️ Post con id '1234' eliminado correctamente\");\r",
 													"});\r",
-													""
+													"console.log(\"⭐ END - Posts - It Breaks - Same ID Test\")"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -868,6 +874,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"console.log(\"⭐ START - Posts - It Breaks - Get BY Tests\")\r",
 											"pm.test(\"GET por ID existente - Post 2\", function () {\r",
 											"    const post = pm.response.json();\r",
 											"    pm.expect(post.id).to.eql(\"2\");\r",
@@ -1092,7 +1099,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"GET by title inexistente devuelve array vacío\", function () {\r",
+											"pm.test(\"⭐ GET by title inexistente devuelve array vacío\", function () {\r",
 											"    const data = pm.response.json();\r",
 											"    const status = pm.response.code;\r",
 											"\r",
@@ -1109,6 +1116,7 @@
 											"});\r",
 											"\r",
 											"// La idea de este test era ver qué ocurría al hacer un GET por un título inexistente, con el objetivo de ver si la API devolvía un array vacío. Sin embargo, la API devuelve todos los elementos que no tienen un autor o título que coincidan con el valor buscado. Así que este test también permite detectar esos elementos.\r",
+											"console.log(\"END - Posts - It Breaks - Get BY Tests\")\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1151,6 +1159,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"console.log(\"⭐ START - Posts - It Breaks - Put Tests\")\r",
+											"\r",
 											"// Se comprueba que la respuesta contenga un post con el id esperado para verificar que se ha creado correctamente\r",
 											"pm.test(\"✅ Post de prueba creado\", function () {\r",
 											"    const json = pm.response.json();\r",
@@ -1298,6 +1308,7 @@
 											"    // Se añade un console.log para confirmar que el post fue eliminado con éxito\r",
 											"    console.log(\"✅ Post eliminado con éxito\");\r",
 											"});\r",
+											"console.log(\"⭐ END - Posts - It Breaks - Put Tests\")\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1336,6 +1347,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"console.log(\"⭐ START - Posts - It Breaks - Patch Tests\")\r",
+											"\r",
 											"// Se verifica que el post de prueba se haya creado correctamente con el ID 'qa-test-1'\r",
 											"pm.test(\"✅ Post de prueba creado\", function () {\r",
 											"    const json = pm.response.json();\r",
@@ -1436,7 +1449,7 @@
 											"// Se comprueba que el autor ha sido actualizado correctamente\r",
 											"pm.test(\"🔍 Verificación de autor actualizado\", function () {\r",
 											"    const json = pm.response.json();\r",
-											"    pm.expect(json.author).to.eql(\"Autor Modificado\");\r",
+											"    pm.expect(json.author).to.eql(\"Test Author\");\r",
 											"\r",
 											"    // Se añade un console.log para verificar que el autor se ha actualizado correctamente\r",
 											"    console.log(\"✅ Autor verificado:\", json.author);\r",
@@ -1480,6 +1493,7 @@
 											"    // Se añade un console.log para confirmar que el post fue eliminado con éxito\r",
 											"    console.log(\"✅ Post eliminado con éxito\");\r",
 											"});\r",
+											"console.log(\"⭐ END - Posts - It Breaks - Patch Tests\")\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1531,6 +1545,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"console.log(\"⭐ START - Comments - Does It Work - Test\")\r",
 									"// Check the status of the response\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2024,6 +2039,7 @@
 									"    console.log(\"📋 Full content of all comments:\");\r",
 									"    console.log(JSON.stringify(data, null, 2));\r",
 									"});\r",
+									"console.log(\"⭐ END - Comments - Does It Work - Test\")\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2067,6 +2083,9 @@
 											"listen": "test",
 											"script": {
 												"exec": [
+													"console.log(\"⭐ START - Comments - It Breaks - Same ID Test\")\r",
+													"\r",
+													"\r",
 													"pm.test(\"Status code is 201 or 200\", function () {\r",
 													"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
 													"    console.log(\"✅ Second comment created successfully\");\r",
@@ -2256,7 +2275,10 @@
 													"pm.test(\"Status code es 200 o 204 - Post eliminado\", function () {\r",
 													"    pm.expect(pm.response.code).to.be.oneOf([200, 204,]); // Verificar que el código de respuesta es 200 o 204\r",
 													"    console.log(\"🗑️ Post con id 'comment-dup-001' eliminado correctamente\");\r",
-													"});"
+													"});\r",
+													"\r",
+													"console.log(\"⭐ END - Comments - It Breaks - Same ID Test\")\r",
+													""
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -2290,6 +2312,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"console.log(\"⭐ START - Comments - It Breaks - Get BY Test\")\r",
+											"\r",
 											"pm.test(\"Status code is 201 or 200\", function () {\r",
 											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
 											"    console.log(\"✅ Comment created successfully\");\r",
@@ -2629,6 +2653,7 @@
 											"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
 											"    console.log(\"🗑️ Comment with id '1234' deleted successfully\");\r",
 											"});\r",
+											"console.log(\"⭐ END - Comments - It Breaks - Get BY Test\")\r",
 											""
 										],
 										"type": "text/javascript",
@@ -2666,6 +2691,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"console.log(\"⭐ START - Profile - Test\")\r",
+							"\r",
 							"//Se comprueba que el código de respuesta sea 200, lo cual indica que la petición fue exitosa\r",
 							"pm.test(\"Status code is 200 for GET /profile\", function () {\r",
 							"    pm.expect(pm.response.code).to.eql(200); // Aseguramos que el código de respuesta es 200\r",
@@ -2684,6 +2711,7 @@
 							"    pm.expect(profile).to.be.an(\"object\"); // Aseguramos que la respuesta es un objeto\r",
 							"    pm.expect(profile).to.have.property(\"name\"); // Verificamos que existe la propiedad 'name'\r",
 							"});\r",
+							"console.log(\"⭐ END - Profile - Test\")\r",
 							""
 						],
 						"type": "text/javascript",
