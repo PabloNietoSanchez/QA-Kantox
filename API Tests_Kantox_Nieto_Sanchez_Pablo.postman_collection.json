@@ -208,31 +208,79 @@
 					"response": []
 				},
 				{
+					"name": "Get  Posts ID - Check if the Post got Created Succesfully",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Verifica que el status code sea 200 - el post se ha encontrado correctamente\r",
+									"pm.test(\"Status code is 200 - Post creado y recuperado\", function () {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"    console.log(\"✅ Post recuperado correctamente tras creación\");\r",
+									"});\r",
+									"\r",
+									"// Comprueba que el contenido coincide con lo que se envió al crear el post\r",
+									"pm.test(\"Post tiene los datos esperados tras creación\", function () {\r",
+									"    const data = pm.response.json();\r",
+									"\r",
+									"    pm.expect(data).to.have.property(\"id\", \"1234\");\r",
+									"    pm.expect(data).to.have.property(\"title\", \"Mi Nuevo Post de Prueba\");\r",
+									"    pm.expect(data).to.have.property(\"author\", \"Tu Nombre\");\r",
+									"\r",
+									"    console.log(\"📄 Contenido del post tras creación:\");\r",
+									"    console.log(data);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Put Posts - Modify the Created Post",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//Revisa que el status code sea 200, que indica que la actualización se hizo correctamente\r",
-									"pm.test(\"Status code is 200 (actualización exitosa)\", function () {\r",
+									"// Verifica que el status code sea 200, lo que indica que el post existe y se ha obtenido correctamente\r",
+									"pm.test(\"Status code is 200 - Post existe\", function () {\r",
 									"    pm.expect(pm.response.code).to.eql(200);\r",
-									"    console.log(\"Post actualizado correctamente\");\r",
+									"    console.log(\"Post encontrado correctamente\");\r",
 									"});\r",
 									"\r",
-									"//Comprueba que los valores del post efectivamente fueron actualizados y que la respuesta refleja los cambios esperados\r",
-									"pm.test(\"El post actualizado tiene los nuevos valores\", function () {\r",
+									"// Comprueba que el post recibido contiene los datos esperados (id, título y autor actualizados)\r",
+									"pm.test(\"Post tiene los datos esperados\", function () {\r",
 									"    const data = pm.response.json();\r",
 									"\r",
 									"    pm.expect(data).to.have.property(\"id\", \"1234\");\r",
 									"    pm.expect(data).to.have.property(\"title\", \"Título Actualizado\");\r",
 									"    pm.expect(data).to.have.property(\"author\", \"Tu Nombre Actualizado\");\r",
 									"\r",
-									"    //Se añade un console.log para tener una referencia clara de qué devolvió exactamente la API al actualizar el post\r",
-									"    console.log(\"Datos actualizados del post:\");\r",
+									"    // Se añade un console.log para tener una referencia clara de qué devolvió exactamente la API al consultar el post\r",
+									"    console.log(\"Contenido del post:\");\r",
 									"    console.log(data);\r",
-									"});\r",
-									""
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -242,26 +290,6 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is an object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has the 'id' property '240d'\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('id', '240d');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response contains the updated 'title'\", function () {\r",
-									"    pm.expect(pm.response.json().title).to.eql(\"Título Actualizado\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response contains the updated 'author'\", function () {\r",
-									"    pm.expect(pm.response.json().author).to.eql(\"Tu Nombre Actualizado\");\r",
-									"});\r",
-									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -1226,7 +1254,7 @@
 											"pm.test(\"🔍 Verificación de autor actualizado\", function () {\r",
 											"    const json = pm.response.json();\r",
 											"\r",
-											"    pm.expect(json.author).to.eql(\"Autor Modificado\");\r",
+											"    pm.expect(json.author).to.eql(\"Test Author\");\r",
 											"\r",
 											"    // Se añade un console.log para confirmar visualmente el valor del campo 'author'\r",
 											"    console.log(\"✅ Autor verificado:\", json.author);\r",
@@ -1711,26 +1739,6 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is an object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has the 'id' property '240d'\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('id', '240d');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response contains the updated 'title'\", function () {\r",
-									"    pm.expect(pm.response.json().title).to.eql(\"Título Actualizado\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response contains the updated 'author'\", function () {\r",
-									"    pm.expect(pm.response.json().author).to.eql(\"Tu Nombre Actualizado\");\r",
-									"});\r",
-									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2149,14 +2157,14 @@
 											}
 										},
 										"url": {
-											"raw": "http://localhost:3000/posts",
+											"raw": "http://localhost:3000/comments",
 											"protocol": "http",
 											"host": [
 												"localhost"
 											],
 											"port": "3000",
 											"path": [
-												"posts"
+												"comments"
 											]
 										}
 									},
@@ -2246,7 +2254,7 @@
 											"script": {
 												"exec": [
 													"pm.test(\"Status code es 200 o 204 - Post eliminado\", function () {\r",
-													"    pm.expect(pm.response.code).to.be.oneOf([200, 204]); // Verificar que el código de respuesta es 200 o 204\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200, 204,]); // Verificar que el código de respuesta es 200 o 204\r",
 													"    console.log(\"🗑️ Post con id 'comment-dup-001' eliminado correctamente\");\r",
 													"});"
 												],
@@ -2274,6 +2282,61 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Post Comment - Create a new Comment to play with Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201 or 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+											"    console.log(\"✅ Comment created successfully\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains the created comment\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseData).to.have.property(\"id\", \"1234\");\r",
+											"    pm.expect(responseData).to.have.property(\"body\", \"This is a new test comment\");\r",
+											"    pm.expect(responseData).to.have.property(\"postId\", 1);\r",
+											"\r",
+											"    console.log(\"📦 Comment created successfully:\");\r",
+											"    console.log(responseData);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1234\",\r\n  \"body\": \"This is a new test comment\",\r\n  \"postId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
 						},
 						{
 							"name": "Get by ID",
@@ -2550,6 +2613,42 @@
 											"key": "postId",
 											"value": "999999"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Comments ID - Delete the created Comment to clean up the API content Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200 or 204 - Comment deleted\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+											"    console.log(\"🗑️ Comment with id '1234' deleted successfully\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/comments/1234",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comments",
+										"1234"
 									]
 								}
 							},
