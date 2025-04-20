@@ -177,7 +177,7 @@ When item quantity is equal or over 4, get a 50% discount - applies to Green Tea
 | TC-019       | Add 3 Green Teas  | Add 3x Green Tea  | No discount -> £9.33    |
 | TC-020       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
 | TC-021       | Add 10 Green Teas | Add 10x Green Tea | 50% off -> £15.55       |
-| TC-022       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
+| TC-022       | Discount removed on quantity drop  | Add 4x Green Tea -> Remove 1  | 50% off -> £6.22 -> No discount -> £9.33       |
 
 ---
 
