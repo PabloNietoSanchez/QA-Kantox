@@ -42,7 +42,7 @@ I’m going to assume that the next 4 points were already tested and their funct
 
 ### The Thought Process
 Here you have a visual representation of the thought process I followed to create the test cases.
-![Test Cases Logic](QA_-_TestCasesLogic_-_Kantox_-_Nieto_Sanchez_Pablo.png)
+![Test Cases Logic](QA - TestCasesLogic - Kantox - Nieto Sanchez Pablo)
 
 ### Base Cashier System Test Cases
 
