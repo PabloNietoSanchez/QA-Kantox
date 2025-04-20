@@ -130,13 +130,13 @@ Price = £22.46
 
 | Test Case ID | Title                      | Steps            | Expected Result                     |
 |--------------|----------------------------|------------------|-------------------------------------|
-| TC-006       | Add 1 Coffee               | Add 1x Coffee    | Total = £11.23                      |
-| TC-007       | Add 2 Coffees              | Add 2x Coffee    | 1 Coffee free -> Total = £11.23     |
-| TC-008       | Add 3 Coffees              | Add 3x Coffee    | 1 free -> Pay for 2 -> Total = £22.46|
-| TC-009       | Add 4 Coffees              | Add 4x Coffee    | 2 free -> Pay for 2 -> Total = £22.46|
-| TC-010       | Add 5 Coffees              | Add 5x Coffee    | 2 free -> Pay for 3 -> Total = £33.69|
-| TC-011       | Add 100 Coffees            | Add 100x Coffee  | 50 free -> Total = £561.50          |
-| TC-012       | Discount removed on removal| Add 3x Coffee -> Remove 1 | Total = £11.23           |
+| TC-008       | Add 1 Coffee               | Add 1x Coffee    | Total = £11.23                      |
+| TC-009       | Add 2 Coffees              | Add 2x Coffee    | 1 Coffee free -> Total = £11.23     |
+| TC-010       | Add 3 Coffees              | Add 3x Coffee    | 1 free -> Pay for 2 -> Total = £22.46|
+| TC-011       | Add 4 Coffees              | Add 4x Coffee    | 2 free -> Pay for 2 -> Total = £22.46|
+| TC-012       | Add 5 Coffees              | Add 5x Coffee    | 2 free -> Pay for 3 -> Total = £33.69|
+| TC-013       | Add 100 Coffees            | Add 100x Coffee  | 50 free -> Total = £561.50          |
+| TC-014       | Discount removed on removal| Add 3x Coffee -> Remove 1 | Total = £11.23           |
 
 ---
 
@@ -154,10 +154,10 @@ When buying 20 of the items [Strawberries], the price gets changed accordingly [
 
 | Test Case ID | Title                             | Steps                     | Expected Result                     |
 |--------------|-----------------------------------|---------------------------|-------------------------------------|
-| TC-012       | Add <20 Strawberries              | Add 19x Strawberries      | Price = £95.00                      |
-| TC-013       | Add 20 Strawberries               | Add 20x Strawberries      | Discount: £3 -> Price = £60.00      |
-| TC-014       | Add 25 Strawberries               | Add 25x Strawberries      | Discount: £3 -> Price = £75.00      |
-| TC-015       | Discount removed on quantity drop | Add 20 -> Remove 1         | Price = £95.00 (no discount)       |
+| TC-015       | Add <20 Strawberries              | Add 19x Strawberries      | Price = £95.00                      |
+| TC-016       | Add 20 Strawberries               | Add 20x Strawberries      | Discount: £3 -> Price = £60.00      |
+| TC-017       | Add 25 Strawberries               | Add 25x Strawberries      | Discount: £3 -> Price = £75.00      |
+| TC-018       | Discount removed on quantity drop | Add 20 -> Remove 1         | Price = £95.00 (no discount)       |
 
 ---
 
@@ -174,10 +174,10 @@ When item quantity is equal or over 4, get a 50% discount - applies to Green Tea
 
 | Test Case ID | Title             | Steps             | Expected Result        |
 |--------------|-------------------|-------------------|------------------------|
-| TC-015       | Add 3 Green Teas  | Add 3x Green Tea  | No discount -> £9.33    |
-| TC-016       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
-| TC-017       | Add 10 Green Teas | Add 10x Green Tea | 50% off -> £15.55       |
-| TC-018       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
+| TC-019       | Add 3 Green Teas  | Add 3x Green Tea  | No discount -> £9.33    |
+| TC-020       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
+| TC-021       | Add 10 Green Teas | Add 10x Green Tea | 50% off -> £15.55       |
+| TC-022       | Add 4 Green Teas  | Add 4x Green Tea  | 50% off -> £6.22        |
 
 ---
 
@@ -187,12 +187,12 @@ Once we know that the functionalities behave properly by themselves, we would ne
 
 | Test ID | Products Added                       | Action          | Expected Discount(s)                        | Expected Result                         |
 |---------|--------------------------------------|-----------------|---------------------------------------------|------------------------------------------|
-| A1      | 4 Green Teas, 2 Coffees              | Add             | Green Tea (50% off), Coffee (2-for-1)       | Green Tea at half price, Coffee 2-for-1  |
-| A2      | 4 Green Teas, 20 Strawberries        | Add             | Green Tea (50%), Strawberries (£3 each)     | Both discounts apply                     |
-| A3      | 4 Green Teas, 20 Strawberries, 2 Coffees | Add         | All three discounts                         | All correctly applied                    |
-| A4      | 20 Strawberries, 2 Coffees           | Add             | Strawberries + Coffee                       | Discounts apply without Green Tea        |
-| B1      | 4 Green Teas, 2 Coffees -> remove Teas| Remove Teas     | Coffee stays discounted                     | Coffee keeps discount                    |
-| B2      | 4 Green Teas, 20 Strawberries -> remove Teas | Remove Teas | Strawberries stay discounted                | Strawberries discount persists           |
-| B3      | 4 Green Teas, 20 Strawberries -> remove Strawberries | Remove Strawberries | Green Tea discount persists      | Green Tea discount persists              |
-| B4      | All -> remove Coffees                 | Remove Coffees  | Green Tea + Strawberries discounts stay     | Tea & Strawberries stay discounted       |
-| B5      | 20 Strawberries -> remove 1           | Reduce quantity | None                                        | Discount removed, price = £95            |
+| TC-023  | 4 Green Teas, 2 Coffees              | Add             | Green Tea (50% off), Coffee (2-for-1)       | Green Tea at half price, Coffee 2-for-1  |
+| TC-024  | 4 Green Teas, 20 Strawberries        | Add             | Green Tea (50%), Strawberries (£3 each)     | Both discounts apply                     |
+| TC-025  | 4 Green Teas, 20 Strawberries, 2 Coffees | Add         | All three discounts                         | All correctly applied                    |
+| TC-026  | 20 Strawberries, 2 Coffees           | Add             | Strawberries + Coffee                       | Discounts apply without Green Tea        |
+| TC-027  | 4 Green Teas, 2 Coffees -> remove Teas| Remove Teas     | Coffee stays discounted                     | Coffee keeps discount                    |
+| TC-028  | 4 Green Teas, 20 Strawberries -> remove Teas | Remove Teas | Strawberries stay discounted                | Strawberries discount persists           |
+| TC-029  | 4 Green Teas, 20 Strawberries -> remove Strawberries | Remove Strawberries | Green Tea discount persists      | Green Tea discount persists              |
+| TC-030  | All -> remove Coffees                 | Remove Coffees  | Green Tea + Strawberries discounts stay     | Tea & Strawberries stay discounted       |
+| TC-031  | 20 Strawberries -> remove 1           | Reduce quantity | None                                        | Discount removed, price = £95            |
