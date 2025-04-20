@@ -1116,7 +1116,8 @@
 											"});\r",
 											"\r",
 											"// La idea de este test era ver qué ocurría al hacer un GET por un título inexistente, con el objetivo de ver si la API devolvía un array vacío. Sin embargo, la API devuelve todos los elementos que no tienen un autor o título que coincidan con el valor buscado. Así que este test también permite detectar esos elementos.\r",
-											"console.log(\"END - Posts - It Breaks - Get BY Tests\")\r",
+											"console.log(\"⭐ END - Posts - It Breaks - Get BY Tests\")\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
