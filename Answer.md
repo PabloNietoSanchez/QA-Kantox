@@ -40,6 +40,10 @@ I’m going to assume that the next 4 points were already tested and their funct
 
 ---
 
+### The Thought Process
+Here you have a visual representation of the thought process I followed to create the test cases.
+![Test Cases Logic](QA_-_TestCasesLogic_-_Kantox_-_Nieto_Sanchez_Pablo.png)
+
 ### Base Cashier System Test Cases
 
 **5 - You can add a product to the cart and the product appears on the cart with the corresponding price**  
@@ -196,3 +200,6 @@ Once we know that the functionalities behave properly by themselves, we would ne
 | TC-029  | 4 Green Teas, 20 Strawberries -> remove Strawberries | Remove Strawberries | Green Tea discount persists      | Green Tea discount persists              |
 | TC-030  | All -> remove Coffees                 | Remove Coffees  | Green Tea + Strawberries discounts stay     | Tea & Strawberries stay discounted       |
 | TC-031  | 20 Strawberries -> remove 1           | Reduce quantity | None                                        | Discount removed, price = £95            |
+
+The logic Would look sort of like this:
+![DiagramaVenn](Diagrama_Venn.png)
